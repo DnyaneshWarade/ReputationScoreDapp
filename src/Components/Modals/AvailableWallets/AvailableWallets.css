@@ -1,0 +1,27 @@
+.available-wallets {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px 18px;
+	margin-top: 10px;
+}
+.single-wallet {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap:16px;
+	padding:8px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	cursor:pointer;
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.single-wallet:hover {
+	/* border: 1px solid #9281ff8e; */
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.selected-symbol {
+	padding-right: 10px;
+}
+.wallet-name {
+	font-weight: 400;
+}

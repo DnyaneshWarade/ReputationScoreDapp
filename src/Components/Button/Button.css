@@ -1,0 +1,11 @@
+.gradient-button{
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    border:none;
+    font-size: 16px;
+    color: white;
+    background-image: linear-gradient(90deg, #4B74FF, #9281FF);
+}
+.gradient-button:hover{
+    background-image: linear-gradient(270deg, #4B74FF, #9281FF);
+}

@@ -1,0 +1,37 @@
+
+.connected-wallet {
+	border: 1px solid #9281ff6b;
+	border-radius: 40px;
+}
+.connected-wallet:hover {
+	border: 1px solid #9281ff;
+}
+.preview-nfc{
+    text-align: center;
+    width: 150px;
+}
+.preview-nfc span{
+    letter-spacing:2px;
+}
+
+.is-primary{
+    color:rgb(83, 83, 83);
+}
+.button-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top:25px;
+}
+.empty-card{
+    flex-direction: column;
+    padding-bottom: 10px;
+    border: 1px solid rgb(230, 229, 229);
+    border-radius: 8px;
+}
+.empty-card img{
+    width: 30%;
+}
+.empty-card h4{
+    margin-top: -25px;
+    color: rgb(153, 153, 153);
+}

@@ -1,0 +1,108 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+.macro-wallet-status,
+.macro-wallet-card {
+	background-image: linear-gradient(
+		90deg,
+		rgba(236, 235, 235, 0.76),
+		rgba(243, 242, 242, 0.384)
+	);
+	border-radius: 8px;
+	border: 1px solid rgba(77, 154, 241, 0.096);
+	margin-top: 15px;
+	padding: 3px 6px;
+	padding-left: 15px;
+}
+.macro-wallet-status .section {
+	display: inline-flex;
+	align-items: center;
+	background-color: #e6e6e6d2;
+	margin: 10px 2px;
+	padding: 5px 15px;
+	border-radius: 8px;
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+}
+.user {
+	width: 50px;
+	height: 50px;
+	margin-left: -24px;
+	border-radius: 50%;
+	mix-blend-mode: multiply;
+}
+.macro-wallet-status .section p {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding-left: 5px;
+}
+.macro-wallet-status .section .wallet-connect {
+	text-decoration: underline;
+	color: gray;
+	cursor: pointer;
+}
+
+/*Macro Score*/
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	border-radius: 8px;
+}
+.macro-wallet-card {
+	padding: 10px 5px;
+}
+.macro-graph-container {
+	text-align: center;
+	margin-top: 10px;
+}
+.macro-graph {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    border-top-right-radius: 40px;
+}
+.graph-info{
+    border-top-left-radius: 40px;
+}
+.go-back {
+	text-align: center;
+	color: rgb(148, 148, 148);
+	cursor: pointer;
+	margin-top: 10px;
+}
+.go-back-button:hover {
+	color: rgb(37, 37, 37);
+	text-decoration: underline;
+}
+
+.macro-score-check {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	justify-content: center;
+	align-items: center;
+}
+
+.graph-card {
+	background-color: white;
+    /* border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px; */
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    padding:5px;
+}
+.graph-card:hover {
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.gray-header{
+	color: rgb(92, 92, 92);
+}

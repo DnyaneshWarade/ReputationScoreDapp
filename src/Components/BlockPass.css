@@ -1,0 +1,10 @@
+.blockpass {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.blockpass-button {
+	text-align: center;
+	min-width: 120px;
+}
