@@ -3,8 +3,6 @@ import Button from "../../Button/Button";
 import "./../Modal.css";
 import "./ConnectedWallets.css";
 
-const emptyCart = "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/empty-cart_zxm3mn.gif";
-
 const ConnectedWallets = ({
 	setAvailableWalletModalOpen,
 	availableWallets,
@@ -20,15 +18,18 @@ const ConnectedWallets = ({
 		}
 	}, [availableWallets]);
 	return (
-		<div>
+		<div className="blockpass-package-connected-modal">
 			{isSelected ? (
 				<section>
-					<div className="connected-wallets-container space-y-4 mt-2">
+					<div className="blockpass-package-connected-wallets-container space-y-4 mt-2">
 						{availableWallets
 							.filter((wallet) => wallet.selected === true)
 							.map((wallet, i) => (
-								<div key={i} className="connected-wallet flex gap-4 px-4 py-2">
-									<div className="flex-center">
+								<div
+									key={i}
+									className="blockpass-package-connected-wallet flex gap-4"
+								>
+									<div className="blockpass-package-flex-center">
 										<img
 											className="h-[35px] w-[35px] rounded-full"
 											src={wallet.logo}
@@ -37,8 +38,10 @@ const ConnectedWallets = ({
 									</div>
 									<div className="flex flex-col">
 										<h4>{wallet.id}</h4>
-										<p className="text-[12px] is-primary">
-											{wallet.primary ? "Primary wallet" : "Secondary wallet"}
+										<p className="text-[12px] blockpass-package-is-primary">
+											{wallet.primary
+												? "Primary wallet"
+												: "Secondary wallet"}
 										</p>
 									</div>
 								</div>
@@ -46,20 +49,17 @@ const ConnectedWallets = ({
 					</div>
 				</section>
 			) : (
-				<section className="empty-card flex-center">
-					<img src={emptyCart} alt="" />
-					<h4>Empty Connected Wallets</h4>
+				<section className="blockpass-package-empty-card blockpass-package-flex-center">
+					<h4>No wallet is connected</h4>
 				</section>
 			)}
-			<div className="button-group">
-				<Button
-					onClick={() => setAvailableWalletModalOpen(true)}
-					className="flex-center"
-				>
+			<br />
+			<div className="blockpass-package-button-group">
+				<Button onClick={() => setAvailableWalletModalOpen(true)}>
 					+ Add more wallets
 				</Button>
-				<Button onClick={() => handleNext()} className="preview-nfc">
-					Preview NFC
+				<Button onClick={() => handleNext()} disabled={!isSelected}>
+					Next
 				</Button>
 			</div>
 		</div>

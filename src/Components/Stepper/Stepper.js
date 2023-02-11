@@ -99,7 +99,9 @@ const Stepper = ({ steps, currentStep }) => {
 				</div>
 				<div
 					className={`flex-auto border ${
-						newStep.length - 1 === index ? "" : "border-t-2"
+						newStep.length - 1 === index
+							? ""
+							: "blockpass-package-border-t-2"
 					} transition duration-500 ease-in-out  ${
 						step.completed
 							? "border-[#6047FF] "

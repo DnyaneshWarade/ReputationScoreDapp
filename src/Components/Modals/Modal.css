@@ -1,7 +1,5 @@
-body{
-	background-color: #0C0E11;
-}
-.star-modal {
+
+.blockpass-package-star-modal {
 	position: absolute;
 	top: 15%;
 	padding: 20px;
@@ -10,36 +8,37 @@ body{
 	border-radius: 15px;
 	box-shadow: inset -1px -1px 1px rgba(185, 185, 185, 0.1);
 }
-.modal-header{
+.blockpass-package-modal-header{
 	display: flex;
 	justify-content: space-between;
-	padding: 15px 18px;
+	align-items: center;
 	border-bottom: 1px solid #282c3a;
 }
-.modal-sub-header{
-	border-bottom: 0;
-	color:rgb(7, 7, 7);
-}
-.modal-header div{
-	display: flex;
-	gap:5px;
-}
-.modal-title{
-	color: #9281FF;
+.blockpass-package-modal-title{
+	color: rgba(50, 58, 70, 1);
 	display: flex;
 	align-items: flex-end;
-	font-size:1.5rem;
+	font-size:23px;
 }
-.modal-close{
-	background-color: #c6bef775;
+.blockpass-package-modal-close{
+	height:2rem;
 	border: 0;
-	border-radius: 50%;
-
-	padding: 2px 12px;
-	color:white;
+	border-radius: 5px;
+	margin:0;
+	padding: 5px 10px;
+	color:black;
 }
-.modal-close:hover{
-	background-color: #9281ffd8;
+.blockpass-package-modal-close:hover{
+	background-color: rgba(224, 229, 243, 0.555);
+}
+.blockpass-package-flex-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.blockpass-package-my-blur {
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
 }
 .mt-8 {
 	margin-top: 2rem;
@@ -324,14 +323,6 @@ body{
 	font-size: 25px;
 }
 
-.my-blur {
-	filter: blur(5px);
-	-webkit-filter: blur(5px);
-}
-.my-blur-remove {
-	filter: blur(0px);
-	-webkit-filter: blur(0px);
-}
 
 .blur-sm {
 	--tw-blur: blur(4px);
@@ -350,14 +341,7 @@ body{
 	--tw-bg-opacity: 1;
 	background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
-.h-screen {
-	height: 200vh;
-}
 .text-center {
 	text-align: center;
 }
-.flex-center{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+

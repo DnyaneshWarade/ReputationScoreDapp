@@ -1,37 +1,31 @@
-
-.connected-wallet {
+.blockpass-package-connected-modal p, .blockpass-package-connected-modal h4{
+    margin: 0;
+}
+.blockpass-package-connected-wallet {
 	border: 1px solid #9281ff6b;
 	border-radius: 40px;
+	padding: 1rem;
 }
-.connected-wallet:hover {
+.blockpass-package-connected-wallet:hover {
 	border: 1px solid #9281ff;
 }
-.preview-nfc{
-    text-align: center;
-    width: 150px;
-}
-.preview-nfc span{
-    letter-spacing:2px;
-}
 
-.is-primary{
-    color:rgb(83, 83, 83);
+.blockpass-package-is-primary {
+	color: rgb(83, 83, 83);
 }
-.button-group{
-    display: flex;
-    justify-content: space-between;
-    margin-top:25px;
+.blockpass-package-button-group {
+	display: flex;
+	justify-content: center;
+	gap: 0.8rem;
 }
-.empty-card{
-    flex-direction: column;
-    padding-bottom: 10px;
-    border: 1px solid rgb(230, 229, 229);
-    border-radius: 8px;
+.blockpass-package-empty-card {
+	padding: 3rem 0;
+	border: 1px solid rgb(230, 229, 229);
+	border-radius: 8px;
 }
-.empty-card img{
-    width: 30%;
-}
-.empty-card h4{
-    margin-top: -25px;
-    color: rgb(153, 153, 153);
+.blockpass-package-empty-card h4 {
+	color: rgba(100, 116, 139, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23px;
 }

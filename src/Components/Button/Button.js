@@ -1,12 +1,12 @@
-import React from 'react';
-import './Button.css';
+import React from "react";
+import "./Button.css";
 
-const Button = ({onClick, className, children}) => {
-    return (
-        <div onClick={onClick} className={`${className} gradient-button cursor-pointer`}>
-            {children}
-        </div>
-    );
+const Button = ({ className='', children, ...rest }) => {
+	return (
+		<button className={`${className} gradient-button`} {...rest}>
+			{children}
+		</button>
+	);
 };
 
 export default Button;

@@ -1,3 +1,6 @@
+.blockpass-package-border-t-2 {
+    border: 2px solid red;
+}
 .absolute {
   position: absolute;
 }
@@ -75,10 +78,6 @@
   color: rgb(96 71 255 / var(--tw-text-opacity));
 }
 
-.border-t-2 {
-    border: 2px solid red;
-  /* border-top-width: 2px solid red; */
-}
 
 .border-gray-300 {
   --tw-border-opacity: 1;

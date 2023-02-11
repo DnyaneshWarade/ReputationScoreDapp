@@ -5,7 +5,7 @@ import "./BlockPass.css";
 import Button from "./Button/Button";
 import ModalController from "./ModalController/ModalController";
 
-const BlockPass = () => {
+const BlockPass = ({ logoList }) => {
 	const [modalController, setModalController] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
@@ -17,7 +17,6 @@ const BlockPass = () => {
 			selected: false,
 			primary: true,
 			score: 905,
-			grade: "A+",
 		},
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021059/logo2_o2yqhd.png",
@@ -26,7 +25,6 @@ const BlockPass = () => {
 			selected: false,
 			primary: false,
 			score: 700,
-			grade: "A-",
 		},
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo6_xhcxav.png",
@@ -35,7 +33,6 @@ const BlockPass = () => {
 			selected: false,
 			primary: false,
 			score: 650,
-			grade: "B",
 		},
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo4_wxtljw.jpg",
@@ -44,7 +41,6 @@ const BlockPass = () => {
 			selected: false,
 			primary: false,
 			score: 805,
-			grade: "A",
 		},
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo5_kxostt.png",
@@ -53,7 +49,6 @@ const BlockPass = () => {
 			selected: false,
 			primary: false,
 			score: 907,
-			grade: "A+",
 		},
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo7_a5agqf.png",
@@ -62,15 +57,16 @@ const BlockPass = () => {
 			selected: false,
 			primary: false,
 			score: 700,
-			grade: "A-",
 		},
 	]);
 
 	return (
-		<div className="blockpass">
+		<div className="package-blockpass">
 			<Button
 				onClick={() => setModalController(true)}
-				className={`${modalController ? "my-blur" : " "} blockpass-button`}
+				className={`${
+					modalController ? "blockpass-package-my-blur" : " "
+				} package-blockpass-button`}
 			>
 				My Account
 			</Button>
