@@ -101,9 +101,7 @@ function App() {
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() =>
-											setAvailableWalletModalOpen(true)
-										}
+										onClick={() => setAvailableWalletModalOpen(true)}
 										className="blockpass-package-wallet-connect"
 									>
 										Connect wallet
@@ -156,46 +154,40 @@ function App() {
 				</section>
 				<section style={{ width: "30%" }}>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 				</section>
 			</div>
