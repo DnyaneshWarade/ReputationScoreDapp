@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWallets";
-import './App.css';
+import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
-import dygnify_logo from './Images/dygnify_logo.png';
+import dygnify_logo from "./Images/dygnify_logo.png";
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
@@ -99,9 +99,7 @@ function App() {
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() =>
-											setAvailableWalletModalOpen(true)
-										}
+										onClick={() => setAvailableWalletModalOpen(true)}
 										className="blockpass-package-wallet-connect"
 									>
 										Connect wallet
@@ -125,77 +123,63 @@ function App() {
 						<div className="blockpass-package-macro-wallet-card">
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>On Chain</p>
-								<Charts
-									connectedWallet={connectedWallet}
-								/>
+								<Charts connectedWallet={connectedWallet} />
 							</div>
 							{connectedWallet.name === "" ? (
 								<div className="blockpass-package-graph-card blockpass-package-flex-center">
-									<Button
-										onClick={() =>
-											setAvailableWalletModalOpen(true)
-										}
-									>
+									<Button onClick={() => setAvailableWalletModalOpen(true)}>
 										Connect Wallet
 									</Button>
 								</div>
 							) : (
 								<div className="blockpass-package-graph-card blockpass-package-flex-center">
 									<p>Off Chain</p>
-									<Charts
-										connectedWallet={connectedWallet}
-									/>
+									<Charts connectedWallet={connectedWallet} />
 								</div>
 							)}
 						</div>
 						<br />
-						<div  className="blockpass-package-flex-center">
+						<div className="blockpass-package-flex-center">
 							<Button>Get Credit Score</Button>
 						</div>
 					</section>
 				</section>
 				<section style={{ width: "30%" }}>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Molestias, voluptas quo accusantium temporibus nam sunt
-						porro alias iste nobis commodi placeat aperiam nulla
-						nihil officiis dolor voluptatem quod necessitatibus
-						voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
+						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
+						necessitatibus voluptates!
 					</p>
 				</section>
 			</div>
