@@ -472,3 +472,7 @@ body {
 	border-radius: 16px;
 }
 
+.button-group{
+    gap:2rem;
+}
+

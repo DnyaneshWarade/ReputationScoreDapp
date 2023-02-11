@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWallets";
-import './App.css';
+import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
-import dygnify_logo from './Images/dygnify_logo.png';
+import dygnify_logo from "./Images/dygnify_logo.png";
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
@@ -65,10 +65,12 @@ function App() {
 		name: "",
 		id: "",
 	});
+	const [selected, setSelected] = useState(false);
 	useEffect(() => {
 		for (let wallet of availableWallets) {
 			if (wallet.selected === true) {
 				setConnectedWallet({ ...wallet });
+				setSelected(true);
 				break;
 			}
 		}
@@ -79,7 +81,7 @@ function App() {
 			<div className="reputation-header">
 				<img src={dygnify_logo} alt="" />
 				<Button onClick={() => setAvailableWalletModalOpen(true)}>
-					Connect Wallet
+					{selected ? "Connected" : "Connect Wallet"}
 				</Button>
 			</div>
 			<div
@@ -118,6 +120,20 @@ function App() {
 						</div>
 					</section>
 					<br />
+					<section className="blockpass-package-flex-center button-group">
+						<Button
+							onClick={() => setAvailableWalletModalOpen(true)}
+						>
+							{selected ? "+ Add more wallet" : "Connect Wallet"}
+						</Button>
+						<Button
+							onClick={() => setAvailableWalletModalOpen(true)}
+							disabled={!selected}
+						>
+							Get Credit Score
+						</Button>
+					</section>
+					
 					<section className="repu-card blockpass-package-macro-wallet-card-container">
 						<h3 className="text-center blockpass-package-gray-header">
 							Reputation Score
@@ -125,32 +141,16 @@ function App() {
 						<div className="blockpass-package-macro-wallet-card">
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>On Chain</p>
-								<Charts
-									connectedWallet={connectedWallet}
-								/>
+								<Charts connectedWallet={connectedWallet} />
 							</div>
-							{connectedWallet.name === "" ? (
-								<div className="blockpass-package-graph-card blockpass-package-flex-center">
-									<Button
-										onClick={() =>
-											setAvailableWalletModalOpen(true)
-										}
-									>
-										Connect Wallet
-									</Button>
-								</div>
-							) : (
-								<div className="blockpass-package-graph-card blockpass-package-flex-center">
-									<p>Off Chain</p>
-									<Charts
-										connectedWallet={connectedWallet}
-									/>
-								</div>
-							)}
+							<div className="blockpass-package-graph-card blockpass-package-flex-center">
+								<p>Off Chain</p>
+								<Charts connectedWallet={connectedWallet} />
+							</div>
 						</div>
 						<br />
-						<div  className="blockpass-package-flex-center">
-							<Button>Get Credit Score</Button>
+						<div className="blockpass-package-flex-center">
+							<Button disabled={!selected}>Create NFC</Button>
 						</div>
 					</section>
 				</section>
