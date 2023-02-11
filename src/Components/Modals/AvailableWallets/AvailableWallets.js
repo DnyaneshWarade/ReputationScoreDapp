@@ -1,8 +1,7 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import "./../Modal.css";
+import "../../../App.css";
 import "./AvailableWallets.css";
-import "./../MacroScore/MacroScore.css";
 
 const AvailableWallets = ({
 	setAvailableWalletModalOpen,
