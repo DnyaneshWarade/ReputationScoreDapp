@@ -26,7 +26,7 @@ const Loader = () => {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, []);
+	}, [currentIndex]);
 
 	return (
 		<div className="reputation-loader-container">
