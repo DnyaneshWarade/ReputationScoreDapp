@@ -364,20 +364,31 @@ body {
 
 .blockpass-package-macro-wallet-status,
 .blockpass-package-macro-wallet-card-container {
-	background: #D0D5DD;
 	border-radius: 8px;
-	border: 1px solid rgba(230, 206, 247, 0.616);
+	border: 1px solid rgba(230, 206, 247, 0.541);
 	margin-top: 15px;
 	padding: 1rem;
+}
+.blockpass-package-macro-wallet-status{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
 }
 .blockpass-package-macro-wallet-status .status-info {
 	display: flex;
 	align-items: center;
+    gap: 10px;
 	background: white;
 	padding: 1rem;
 	border-radius: 8px;
 	border-top-left-radius: 100px;
 	border-bottom-left-radius: 100px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px; */
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 .blockpass-package-default-logo {
 	width: 50px;
@@ -391,10 +402,9 @@ body {
 	margin: 0;
 	padding-left: 5px;
 }
-.blockpass-package-macro-wallet-status .status-info .blockpass-package-wallet-connect {
-	text-decoration: underline;
+.blockpass-package-wallet-connect {
 	color: gray;
-	cursor: pointer;
+    text-decoration: underline;
 }
 
 /*Macro Score*/

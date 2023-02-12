@@ -48,6 +48,7 @@ const AvailableWallets = ({
 						onClick={() => {
 							availableWallets[i].selected = true;
 							setAvailableWallets([...availableWallets]);
+							setTimeout(()=>{setAvailableWalletModalOpen(false)},500)
 						}}
 						className="blockpass-package-single-wallet"
 					>

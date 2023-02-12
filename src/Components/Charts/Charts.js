@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-const Charts = ({ connectedWallet}) => {
+const Charts = ({ connectedWallet,loaderDisplayed}) => {
 	console.log(connectedWallet);
 
 	const [state, setState] = useState({
@@ -84,12 +84,12 @@ const Charts = ({ connectedWallet}) => {
 		},
 	});
 
-	useEffect(()=>{
-		if(connectedWallet.name!==''){
+	useEffect(() => {
+		if (connectedWallet.name !== "" && loaderDisplayed) {
 			const { score, name } = connectedWallet;
 			setState({
 				otherChart: {
-					series: [score/10],
+					series: [score / 10],
 					options: {
 						chart: {
 							height: 350,
@@ -162,12 +162,12 @@ const Charts = ({ connectedWallet}) => {
 						stroke: {
 							lineCap: "round",
 						},
-						labels: [' '],
+						labels: [" "],
 					},
 				},
 			});
 		}
-	},[connectedWallet])
+	}, [connectedWallet, loaderDisplayed]);
 
 	return (
 		<div>

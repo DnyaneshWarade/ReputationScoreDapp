@@ -10,16 +10,18 @@
     bottom: 0px;
     left: 0px;
     gap: 0.6rem;
+    color: rgba(100, 116, 139, 1);
+    
 }
 
 .reputation-loader-container small {
-    width: 5.6rem;
+    width: 10.6rem;
     text-align: center;
 }
 
 .reputation-loader {
-    height: 1.4rem;
-    width: 1.4rem;
+    height: 3rem;
+    width: 3rem;
     position: relative;
     border-width: 4px;
     border-radius: 9999px;
@@ -27,7 +29,7 @@
     --tw-border-opacity: 1;
     border-color: rgb(255 255 255 / var(--tw-border-opacity));
     --tw-border-opacity: 1;
-    border-top-color: rgb(20 23 31 / var(--tw-border-opacity));
+    border-top-color: rgba(100, 116, 139, 1);
 }
 
 .reputation-loader-spin {

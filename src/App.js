@@ -4,10 +4,13 @@ import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
 import dygnify_logo from "./Images/dygnify_logo.png";
+import Loader from "./Components/Loader/Loader";
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
 function App() {
+	const [isLoader, setIsLoader] = useState(false);
+	const [loaderDisplayed, setLoaderDisplayed] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
 	const [availableWallets, setAvailableWallets] = useState([
@@ -65,6 +68,14 @@ function App() {
 		name: "",
 		id: "",
 	});
+
+	if (isLoader) {
+		setTimeout(() => {
+			setIsLoader(false);
+			setLoaderDisplayed(true);
+		}, 7000);
+	}
+
 	const [selected, setSelected] = useState(false);
 	useEffect(() => {
 		for (let wallet of availableWallets) {
@@ -78,6 +89,8 @@ function App() {
 
 	return (
 		<div>
+			{isLoader && <Loader />}
+
 			<div className="reputation-header">
 				<img src={dygnify_logo} alt="" />
 				<Button onClick={() => setAvailableWalletModalOpen(true)}>
@@ -86,36 +99,51 @@ function App() {
 			</div>
 			<div
 				className={`${
-					availableWalletModalOpen ? "blockpass-package-my-blur" : ""
+					availableWalletModalOpen || isLoader
+						? "blockpass-package-my-blur"
+						: ""
 				} reputation-body`}
 			>
 				<section style={{ width: "70%" }}>
 					<section className="repu-card blockpass-package-macro-wallet-status">
-						<div className="status-info">
-							<img
-								src={connectedWallet.logo}
-								alt=""
-								className="blockpass-package-default-logo"
-							/>
-							{connectedWallet.name === "" ? (
+						{!selected && (
+							<div className="status-info">
+								<img
+									src={user}
+									alt=""
+									className="blockpass-package-default-logo"
+								/>
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() => setAvailableWalletModalOpen(true)}
+										onClick={() =>
+											setAvailableWalletModalOpen(true)
+										}
+										style={{ cursor: "pointer" }}
 										className="blockpass-package-wallet-connect"
 									>
 										Connect wallet
 									</span>
 								</p>
-							) : (
-								<p>
-									<span>{connectedWallet.name}</span>
-									<span className="blockpass-package-wallet-connect">
-										{connectedWallet.id}
-									</span>
-								</p>
-							)}
-						</div>
+							</div>
+						)}
+						{availableWallets
+							.filter((wallet) => wallet.selected === true)
+							.map((wallet, i) => (
+								<div key={i} className="status-info">
+									<img
+										src={wallet.logo}
+										alt=""
+										className="blockpass-package-default-logo"
+									/>
+									<p>
+										<span>{wallet.name}</span>
+										<span className="blockpass-package-wallet-connect">
+											{wallet.id}
+										</span>
+									</p>
+								</div>
+							))}
 					</section>
 					<br />
 					<section className="blockpass-package-flex-center button-group">
@@ -125,13 +153,13 @@ function App() {
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
 						<Button
-							onClick={() => setAvailableWalletModalOpen(true)}
+							onClick={() => setIsLoader(true)}
 							disabled={!selected}
 						>
 							Get Credit Score
 						</Button>
 					</section>
-					
+
 					<section className="repu-card blockpass-package-macro-wallet-card-container">
 						<h3 className="text-center blockpass-package-gray-header">
 							Reputation Score
@@ -139,55 +167,67 @@ function App() {
 						<div className="blockpass-package-macro-wallet-card">
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>On Chain</p>
-								<Charts connectedWallet={connectedWallet} />
+								<Charts
+									connectedWallet={connectedWallet}
+									loaderDisplayed={loaderDisplayed}
+								/>
 							</div>
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>Off Chain</p>
-								<Charts connectedWallet={connectedWallet} />
+								<Charts
+									connectedWallet={connectedWallet}
+									loaderDisplayed={loaderDisplayed}
+								/>
 							</div>
 						</div>
 						<br />
 						<div className="blockpass-package-flex-center">
-							<Button disabled={!selected}>Create NFC</Button>
+							<Button disabled={!loaderDisplayed}>Create NFC</Button>
 						</div>
 					</section>
 				</section>
 				<section style={{ width: "30%" }}>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Molestias, voluptas quo accusantium temporibus nam sunt
+						porro alias iste nobis commodi placeat aperiam nulla
+						nihil officiis dolor voluptatem quod necessitatibus
+						voluptates!
 					</p>
 				</section>
 			</div>

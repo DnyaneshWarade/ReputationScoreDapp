@@ -31,7 +31,7 @@ const Loader = () => {
 	return (
 		<div className="reputation-loader-container">
 			<div className="reputation-loader-spin reputation-loader"></div>
-			<small>{loaderName[currentIndex]}</small>
+			<h3>{loaderName[currentIndex]}</h3>
 		</div>
 	);
 };
