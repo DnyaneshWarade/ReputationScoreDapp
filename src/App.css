@@ -10,7 +10,7 @@ body {
 	justify-content: space-between;
 }
 .reputation-header img {
-	height: 3rem;
+	height: 4rem;
 	width: 10rem;
 	cursor: pointer;
 }
@@ -363,10 +363,9 @@ body {
 }
 
 .blockpass-package-macro-wallet-status,
-.blockpass-package-macro-wallet-card-container {
+.blockpass-package-macro-wallet-card-container, .bottom-buttons {
 	border-radius: 8px;
 	border: 1px solid rgba(230, 206, 247, 0.541);
-	margin-top: 15px;
 	padding: 1rem;
 }
 .blockpass-package-macro-wallet-status{
@@ -478,11 +477,32 @@ body {
 		rgba(168, 154, 255, 0.260833) 99.99%,
 		rgba(168, 154, 255, 0.8) 100%
 	);
+	margin-top:1rem;
+	padding: 1rem;
 	box-shadow: inset -1px -1px 1px rgba(185, 185, 185, 0.1);
 	border-radius: 16px;
 }
 
 .button-group{
-    gap:2rem;
+    gap:1rem;
 }
 
+.blockpass-package-right-side p{
+	background-color: white;
+	border-left: 2px solid rgba(168, 154, 255, 0.8);
+	border-radius: 0.3rem;
+	padding: 1rem;
+	text-align: justify;
+	font-size: 1rem;
+	margin-top:0.4rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.reputation-intro-first-block span{
+	font-weight: 600;
+}
+
+.bottom-button-group{
+	display: flex;
+	justify-content: center;
+}

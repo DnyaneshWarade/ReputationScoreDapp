@@ -72,7 +72,7 @@ const Charts = ({ connectedWallet,loaderDisplayed}) => {
 
 					image: {
 						src: [
-							"https://res.cloudinary.com/dltzp2gwx/image/upload/v1675954961/Screenshot_20230209_203229_scvyen.png",
+							"https://res.cloudinary.com/dltzp2gwx/image/upload/v1675953386/Screenshot_20230209_200525_d61b8t.png",
 						],
 					},
 				},
@@ -155,7 +155,7 @@ const Charts = ({ connectedWallet,loaderDisplayed}) => {
 
 							image: {
 								src: [
-									"https://res.cloudinary.com/dltzp2gwx/image/upload/v1675954961/Screenshot_20230209_203229_scvyen.png",
+									"https://res.cloudinary.com/dltzp2gwx/image/upload/v1675953386/Screenshot_20230209_200525_d61b8t.png",
 								],
 							},
 						},
