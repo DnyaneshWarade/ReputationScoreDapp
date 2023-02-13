@@ -1,11 +1,9 @@
 body {
-	padding: 0.5rem 2rem;	
-	font-family: 'Jost', sans-serif;
-
+	padding: 0.5rem 2rem;
+	font-family: "Jost", sans-serif;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Jost:wght@300&family=Piazzolla:opsz,wght@8..30,200;8..30,300;8..30,400&family=Roboto:wght@300&family=Zen+Kurenaido&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Jost:wght@300&family=Piazzolla:opsz,wght@8..30,200;8..30,300;8..30,400&family=Roboto:wght@300&family=Zen+Kurenaido&display=swap");
 
 .reputation-body {
 	display: flex;
@@ -18,11 +16,10 @@ body {
 }
 
 .reputation-header img {
-	height: 3rem;
+	height: 4rem;
 	width: 10rem;
 	cursor: pointer;
 }
-
 
 .blockpass-package-star-modal {
 	position: absolute;
@@ -375,10 +372,10 @@ body {
 }
 
 .blockpass-package-macro-wallet-status,
-.blockpass-package-macro-wallet-card-container {
+.blockpass-package-macro-wallet-card-container,
+.bottom-buttons {
 	border-radius: 8px;
 	border: 1px solid rgba(230, 206, 247, 0.541);
-	margin-top: 15px;
 	padding: 1rem;
 }
 
@@ -452,7 +449,8 @@ body {
 .blockpass-package-graph-card {
 	background: white;
 
-	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 10px;
@@ -496,10 +494,32 @@ body {
 			rgba(168, 154, 255, 0) -1.23%,
 			rgba(168, 154, 255, 0.260833) 99.99%,
 			rgba(168, 154, 255, 0.8) 100%);
+	margin-top: 1rem;
+	padding: 1rem;
 	box-shadow: inset -1px -1px 1px rgba(185, 185, 185, 0.1);
 	border-radius: 16px;
 }
 
 .button-group {
-	gap: 2rem;
+	gap: 1rem;
+}
+
+.blockpass-package-right-side p {
+	background-color: white;
+	border-left: 2px solid rgba(168, 154, 255, 0.8);
+	border-radius: 0.3rem;
+	padding: 1rem;
+	text-align: justify;
+	font-size: 1rem;
+	margin-top: 0.4rem;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.reputation-intro-first-block span {
+	font-weight: 600;
+}
+
+.bottom-button-group {
+	display: flex;
+	justify-content: center;
 }

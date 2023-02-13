@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWallets";
-import "./App.css ";
+import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
 import dygnify_logo from "./Images/dygnify_logo.png";
@@ -110,9 +110,6 @@ function App() {
 
 			<div className="reputation-header">
 				<img src={dygnify_logo} alt="" />
-				<Button onClick={() => setAvailableWalletModalOpen(true)}>
-					{selected ? "Connected" : "Connect Wallet"}
-				</Button>
 			</div>
 			<div
 				className={`${
@@ -190,48 +187,49 @@ function App() {
 								/>
 							</div>
 						</div>
-						<br />
-						<div className="blockpass-package-flex-center">
-							<Button disabled={!loaderDisplayed}>Create NFC</Button>
-						</div>
+					</section>
+					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
+						<Button disabled={!loaderDisplayed} width="35%">
+							Claim Reputation Score
+						</Button>
+						<Button disabled={!loaderDisplayed} width="35%">
+							Create NFC
+						</Button>
 					</section>
 				</section>
-				<section style={{ width: "30%" }}>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+
+				<section
+					className="repu-card blockpass-package-right-side"
+					style={{ width: "30%" }}
+				>
+					<h4 className="blockpass-package-gray-header">
+						What is Karma Score?
+					</h4>
+					<p className="reputation-intro-first-block">
+						The <span>"Karma Score"</span> scoring system is unique in that it
+						incorporates both the organization's on-chain and off-chain
+						behaviour.
 					</p>
+					<h4 className="blockpass-package-gray-header">
+						Reputation off &nbsp;The Chain
+					</h4>
+
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						We determine the score by considering bureau reports, any external
+						ratings, proprietary financial information, and other publicly
+						accessible real-world data.
 					</p>
+					<h4 className="blockpass-package-gray-header">
+						Reputation on The Chain
+					</h4>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						We analyse the wallet transactions, block explorer data, and other
+						information from web 3 sources to determine the score.
 					</p>
+					<h4 className="blockpass-package-gray-header">Score of Reputation</h4>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-						voluptas quo accusantium temporibus nam sunt porro alias iste nobis
-						commodi placeat aperiam nulla nihil officiis dolor voluptatem quod
-						necessitatibus voluptates!
+						The two scores are averaged together to create the result.
+						Customizable weights are provided.
 					</p>
 				</section>
 			</div>
