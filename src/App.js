@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWallets";
-import "./App.css";
+import "./App.css ";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
 import dygnify_logo from "./Images/dygnify_logo.png";
