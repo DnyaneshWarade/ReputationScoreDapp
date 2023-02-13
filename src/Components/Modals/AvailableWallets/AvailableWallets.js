@@ -2,12 +2,30 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 import "../../../App.css";
 import "./AvailableWallets.css";
+import { isConnected } from "../../../services/connect-wallet";
 
 const AvailableWallets = ({
 	setAvailableWalletModalOpen,
 	availableWallets,
 	setAvailableWallets,
 }) => {
+	const metaMaskHandler = async (wallet, i) => {
+		setTimeout(() => {
+			setAvailableWalletModalOpen(false);
+		}, 500);
+
+		if (wallet.name === "MetaMask") {
+			const data = await isConnected();
+			availableWallets[i].id = data.account[0];
+			availableWallets[i].selected = true;
+
+			setAvailableWallets([...availableWallets]);
+		} else {
+			availableWallets[i].selected = true;
+
+			setAvailableWallets([...availableWallets]);
+		}
+	};
 	return (
 		<div
 			className="blockpass-package-star-modal"
@@ -19,9 +37,7 @@ const AvailableWallets = ({
 			}}
 		>
 			<div className="blockpass-package-modal-header">
-				<h3 className="blockpass-package-modal-title">
-					Available Wallets
-				</h3>
+				<h3 className="blockpass-package-modal-title">Available Wallets</h3>
 				<label
 					onClick={() => setAvailableWalletModalOpen(false)}
 					className="blockpass-package-modal-close"
@@ -46,9 +62,7 @@ const AvailableWallets = ({
 					<div
 						key={i}
 						onClick={() => {
-							availableWallets[i].selected = true;
-							setAvailableWallets([...availableWallets]);
-							setTimeout(()=>{setAvailableWalletModalOpen(false)},500)
+							metaMaskHandler(wallet, i);
 						}}
 						className="blockpass-package-single-wallet"
 					>
@@ -60,9 +74,7 @@ const AvailableWallets = ({
 									alt=""
 								/>
 							</div>
-							<h4 className="blockpass-package-wallet-name">
-								{wallet.name}
-							</h4>
+							<h4 className="blockpass-package-wallet-name">{wallet.name}</h4>
 						</div>
 						{wallet.selected === true ? (
 							<p className="blockpass-package-selected-symbol">
