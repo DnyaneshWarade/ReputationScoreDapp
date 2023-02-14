@@ -5,7 +5,8 @@ import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
 import dygnify_logo from "./Images/dygnify_logo.png";
 import Loader from "./Components/Loader/Loader";
-import { isConnected } from "./services/connect-wallet";
+import VideoCard from "./Components/VideoCard/VideoCard";
+
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
@@ -14,6 +15,8 @@ function App() {
 	const [loaderDisplayed, setLoaderDisplayed] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
+
+	const [isVideoOpen, setIsVideoOpen] = useState(false);
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
@@ -195,6 +198,9 @@ function App() {
 						<Button disabled={!loaderDisplayed} width="35%">
 							Create NFC
 						</Button>
+						<Button onClick={setIsVideoOpen} width="10%">
+							video
+						</Button>
 					</section>
 				</section>
 
@@ -238,6 +244,14 @@ function App() {
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
 					availableWallets={availableWallets}
 					setAvailableWallets={setAvailableWallets}
+				/>
+			)}
+
+			{isVideoOpen && (
+				<VideoCard
+					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
+					availableWallets={availableWallets}
+					setIsVideoOpen={setIsVideoOpen}
 				/>
 			)}
 		</div>
