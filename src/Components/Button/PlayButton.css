@@ -1,0 +1,95 @@
+
+.play-button-container{
+    position: absolute;
+    bottom: 1rem;
+    right: 2.6rem;
+}
+
+.video-play-button {
+    text-decoration: none;
+	position: relative;
+	z-index: 10;
+	transform: translateX(-50%) translateY(-50%);
+	box-sizing: content-box;
+	width: 32px;
+	height: 443px;
+	border-radius: 50%;
+	padding: 18px 20px 18px 28px;
+    color: white;
+}
+
+.video-play-button .play {
+	display: block;
+	position: relative;
+	z-index: 3;
+	width: 0;
+	height: 0;
+    left: 3px;
+    width:20px;
+	border-left: 22px solid #fff;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+
+
+.video-play-button:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	display: block;
+	width: 60px;
+	height: 60px;
+	background: #8df5b9;
+	border-radius: 50%;
+	transition: all 200ms;
+}
+
+.video-play-button:before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	display: block;
+	width: 80px;
+	height: 80px;
+	background: #7ff3af60;
+	border-radius: 50%;
+	animation: pulse-border 1500ms ease-out infinite;
+}
+
+
+@keyframes pulse-border {
+	0% {
+		transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+		opacity: 0;
+	}
+}
+
+.video-play-button {
+	-webkit-animation: scale-up-center 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+		both;
+	animation: scale-up-center 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+}
+
+@keyframes scale-up-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+/* ENTRANCE ANIMATION OF THE PLAY BUTTON */
+
+/* ROJO POGI PLAY BUTTON */
