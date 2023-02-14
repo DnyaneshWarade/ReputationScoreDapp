@@ -119,7 +119,10 @@ function App() {
 
 			<header className="reputation-header">
 				<img src={karma_score} alt="" />
-				<PlayButton className="header-button" />
+				<PlayButton
+					onClick={setIsVideoOpen}
+					className="header-button"
+				/>
 			</header>
 			<main
 				className={`${
@@ -217,9 +220,6 @@ function App() {
 						</Button>
 						<Button disabled={!loaderDisplayed} width="35%">
 							Create NFC
-						</Button>
-						<Button onClick={setIsVideoOpen} width="10%">
-							video
 						</Button>
 					</section>
 				</section>
