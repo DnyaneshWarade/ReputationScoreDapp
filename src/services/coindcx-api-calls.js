@@ -1,127 +1,130 @@
-const request = require("request");
-const crypto = require("crypto");
-const Buffer = require("buffer").Buffer;
-require("dotenv").config();
+const CryptoJS = require("crypto-js");
+const key = process.env.REACT_APP_API_KEY_COINDCX; // Place your API key here
+const secret = process.env.REACT_APP_API_SECRET_COINDCX; // Place your secret here
+const baseurl = "https://cors-anywhere.herokuapp.com/https://api.coindcx.com";
 
-const baseurl = "https://api.coindcx.com";
+export async function getBalances() {
+	const timeStamp = Math.floor(Date.now());
+	// To check if the timestamp is correct
+	console.log(timeStamp);
 
-const timeStamp = Math.floor(Date.now());
+	const body = {
+		currency_short_name: "BTC",
+		duration: 20,
+		amount: 0.5,
+		timestamp: timeStamp,
+	};
 
-const key = process.env.API_KEY_COINDCX;
-const secret = process.env.API_SECRET_COINDCX;
+	const payload = JSON.stringify(body);
+	const signature = CryptoJS.HmacSHA256(payload, secret).toString();
 
-const body = {
-	currency_short_name: "BTC",
-	duration: 20,
-	amount: 0.5,
-	timestamp: timeStamp,
-};
-
-const payload = new Buffer(JSON.stringify(body)).toString();
-const signature = crypto
-	.createHmac("sha256", secret)
-	.update(payload)
-	.digest("hex");
-
-async function getBalances() {
 	const options = {
-		url: baseurl + "/exchange/v1/users/balances",
+		method: "POST",
 		headers: {
+			// "Content-Type": "application/json",
 			"X-AUTH-APIKEY": key,
 			"X-AUTH-SIGNATURE": signature,
 		},
-		json: true,
-		body: body,
+		body: payload,
 	};
 
-	try {
-		console.log("Balances :");
-		// get only non-zero balances
-		request.post(options, function (error, response, body) {
-			const nonZeroAccounts = body.filter((account) => {
+	fetch(baseurl + "/exchange/v1/users/balances", options)
+		.then((response) => response.json())
+		.then((data) => {
+			const nonZeroAccounts = data.filter((account) => {
 				return (
 					parseFloat(account.balance) > 0 ||
 					parseFloat(account.locked_balance) > 0
 				);
 			});
-
 			console.log(nonZeroAccounts);
-		});
-	} catch (error) {
-		console.error("Error in request.post:", error);
-	}
+		})
+		.catch((error) => console.error(error));
 }
 
-async function userInfo() {
+export async function userInfo() {
+	const timeStamp = Math.floor(Date.now());
+
+	const body = {
+		currency_short_name: "BTC",
+		duration: 20,
+		amount: 0.5,
+		timestamp: timeStamp,
+	};
+
+	const payload = JSON.stringify(body);
+	const signature = CryptoJS.HmacSHA256(payload, secret).toString();
+
 	const options = {
-		url: baseurl + "/exchange/v1/users/info",
+		method: "POST",
 		headers: {
+			// "Content-Type": "application/json",
 			"X-AUTH-APIKEY": key,
 			"X-AUTH-SIGNATURE": signature,
 		},
-		json: true,
-		body: body,
+		body: payload,
 	};
 
-	try {
-		request.post(options, function (error, response, body) {
-			if (error) {
-				throw error;
-			}
-			console.log(body);
-		});
-	} catch (error) {
-		console.error("Error in request.post:", error);
-	}
+	fetch(baseurl + "/exchange/v1/users/info", options)
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+		.catch((error) => console.error(error));
 }
 
-async function tradeHistory() {
+export async function trade_history() {
+	const timeStamp = Math.floor(Date.now());
+
+	const body = {
+		currency_short_name: "BTC",
+		duration: 20,
+		amount: 0.5,
+		timestamp: timeStamp,
+	};
+
+	const payload = JSON.stringify(body);
+	const signature = CryptoJS.HmacSHA256(payload, secret).toString();
+
 	const options = {
-		url: baseurl + "/exchange/v1/orders/trade_history",
+		method: "POST",
 		headers: {
+			// "Content-Type": "application/json",
 			"X-AUTH-APIKEY": key,
 			"X-AUTH-SIGNATURE": signature,
 		},
-		json: true,
-		body: body,
+		body: payload,
 	};
 
-	try {
-		request.post(options, function (error, response, body) {
-			if (error) {
-				throw error;
-			}
-			console.log(body);
-		});
-	} catch (error) {
-		console.error("Error in request.post:", error);
-	}
+	fetch(baseurl + "/exchange/v1/orders/trade_history", options)
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+		.catch((error) => console.error(error));
 }
 
-async function fetchOrders() {
+export async function fetchOrders() {
+	const timeStamp = Math.floor(Date.now());
+
+	const body = {
+		currency_short_name: "BTC",
+		duration: 20,
+		amount: 0.5,
+		timestamp: timeStamp,
+	};
+
+	const payload = JSON.stringify(body);
+	const signature = CryptoJS.HmacSHA256(payload, secret).toString();
+
 	const options = {
-		url: baseurl + "/exchange/v1/funding/fetch_orders",
+		method: "POST",
 		headers: {
+			// "Content-Type": "application/json",
 			"X-AUTH-APIKEY": key,
 			"X-AUTH-SIGNATURE": signature,
 		},
-		json: true,
-		body: body,
+		body: payload,
 	};
 
-	try {
-		request.post(options, function (error, response, body) {
-			if (error) {
-				throw error;
-			}
-			console.log(body);
-		});
-	} catch (error) {
-		console.error("Error in request.post:", error);
-	}
+	fetch(baseurl + "/exchange/v1/funding/fetch_orders", options)
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+		.catch((error) => console.error(error));
 }
-
-userInfo();
-getBalances();
-tradeHistory();
-fetchOrders();
