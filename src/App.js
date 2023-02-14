@@ -3,9 +3,10 @@ import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWall
 import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
-import dygnify_logo from "./Images/dygnify_logo.png";
+import karma_score from "./Images/karma_score.png";
 import Loader from "./Components/Loader/Loader";
 import { isConnected } from "./services/connect-wallet";
+import PlayButton from "./Components/Button/PlayButton";
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
@@ -104,14 +105,20 @@ function App() {
 		}
 	}, [availableWallets]);
 
+	const openInNewTab = (url) => {
+		window.open(url, "_blank", "noopener,noreferrer");
+	};
+	
+
 	return (
 		<div>
 			{isLoader && <Loader />}
 
-			<div className="reputation-header">
-				<img src={dygnify_logo} alt="" />
-			</div>
-			<div
+			<header className="reputation-header">
+				<img src={karma_score} alt="" />
+				<PlayButton className="header-button" />
+			</header>
+			<main
 				className={`${
 					availableWalletModalOpen || isLoader
 						? "blockpass-package-my-blur"
@@ -130,7 +137,9 @@ function App() {
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() => setAvailableWalletModalOpen(true)}
+										onClick={() =>
+											setAvailableWalletModalOpen(true)
+										}
 										style={{ cursor: "pointer" }}
 										className="blockpass-package-wallet-connect"
 									>
@@ -159,10 +168,15 @@ function App() {
 					</section>
 					<br />
 					<section className="blockpass-package-flex-center button-group">
-						<Button onClick={() => setAvailableWalletModalOpen(true)}>
+						<Button
+							onClick={() => setAvailableWalletModalOpen(true)}
+						>
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
-						<Button onClick={() => setIsLoader(true)} disabled={!selected}>
+						<Button
+							onClick={() => setIsLoader(true)}
+							disabled={!selected}
+						>
 							Get Credit Score
 						</Button>
 					</section>
@@ -189,7 +203,13 @@ function App() {
 						</div>
 					</section>
 					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
-						<Button disabled={!loaderDisplayed} width="35%">
+						<Button
+							onClick={() =>
+								openInNewTab("https://www.google.com/")
+							}
+							disabled={!loaderDisplayed}
+							width="35%"
+						>
 							Claim Reputation Score
 						</Button>
 						<Button disabled={!loaderDisplayed} width="35%">
@@ -206,33 +226,36 @@ function App() {
 						What is Karma Score?
 					</h4>
 					<p className="reputation-intro-first-block">
-						The <span>"Karma Score"</span> scoring system is unique in that it
-						incorporates both the organization's on-chain and off-chain
-						behaviour.
+						The <span>"Karma Score"</span> scoring system is unique
+						in that it incorporates both the organization's on-chain
+						and off-chain behaviour.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation off &nbsp;The Chain
 					</h4>
 
 					<p>
-						We determine the score by considering bureau reports, any external
-						ratings, proprietary financial information, and other publicly
-						accessible real-world data.
+						We determine the score by considering bureau reports,
+						any external ratings, proprietary financial information,
+						and other publicly accessible real-world data.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation on The Chain
 					</h4>
 					<p>
-						We analyse the wallet transactions, block explorer data, and other
-						information from web 3 sources to determine the score.
+						We analyse the wallet transactions, block explorer data,
+						and other information from web 3 sources to determine
+						the score.
 					</p>
-					<h4 className="blockpass-package-gray-header">Score of Reputation</h4>
+					<h4 className="blockpass-package-gray-header">
+						Score of Reputation
+					</h4>
 					<p>
-						The two scores are averaged together to create the result.
-						Customizable weights are provided.
+						The two scores are averaged together to create the
+						result. Customizable weights are provided.
 					</p>
 				</section>
-			</div>
+			</main>
 			{availableWalletModalOpen && (
 				<AvailableWallets
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
