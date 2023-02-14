@@ -16,8 +16,9 @@ function App() {
 	const [loaderDisplayed, setLoaderDisplayed] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
-
 	const [isVideoOpen, setIsVideoOpen] = useState(false);
+	const [offChainScore, setoffChainScore] = useState(450);
+	const [onChainScore, setOnChainScore] = useState(900);
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
@@ -84,11 +85,6 @@ function App() {
 			score: 700,
 		},
 	]);
-	const [connectedWallet, setConnectedWallet] = useState({
-		logo: user,
-		name: "",
-		id: "",
-	});
 
 	if (isLoader) {
 		setTimeout(() => {
@@ -101,7 +97,6 @@ function App() {
 	useEffect(() => {
 		for (let wallet of availableWallets) {
 			if (wallet.selected === true) {
-				setConnectedWallet({ ...wallet });
 				setSelected(true);
 				break;
 			}
@@ -112,24 +107,22 @@ function App() {
 		window.open(url, "_blank", "noopener,noreferrer");
 	};
 
-
 	return (
 		<div>
-			{isLoader && <Loader />}
+			<div className={`${isLoader && "video-my-blur"}`}>
+				{isLoader && <Loader />}
+			</div>
 
 			<header className="reputation-header">
 				<img src={karma_score} alt="" />
-				<PlayButton
-					onClick={setIsVideoOpen}
-					className="header-button"
-				/>
+				<PlayButton onClick={setIsVideoOpen} className="header-button" />
 			</header>
 			<main
 				className={`${
-					availableWalletModalOpen || isLoader
+					availableWalletModalOpen || isLoader || isVideoOpen
 						? "blockpass-package-my-blur"
 						: ""
-					} reputation-body`}
+				} reputation-body`}
 			>
 				<section style={{ width: "70%" }}>
 					<section className="repu-card blockpass-package-macro-wallet-status">
@@ -143,9 +136,7 @@ function App() {
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() =>
-											setAvailableWalletModalOpen(true)
-										}
+										onClick={() => setAvailableWalletModalOpen(true)}
 										style={{ cursor: "pointer" }}
 										className="blockpass-package-wallet-connect"
 									>
@@ -174,15 +165,10 @@ function App() {
 					</section>
 					<br />
 					<section className="blockpass-package-flex-center button-group">
-						<Button
-							onClick={() => setAvailableWalletModalOpen(true)}
-						>
+						<Button onClick={() => setAvailableWalletModalOpen(true)}>
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
-						<Button
-							onClick={() => setIsLoader(true)}
-							disabled={!selected}
-						>
+						<Button onClick={() => setIsLoader(true)} disabled={!selected}>
 							Get Credit Score
 						</Button>
 					</section>
@@ -195,14 +181,14 @@ function App() {
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>On Chain</p>
 								<Charts
-									connectedWallet={connectedWallet}
+									chainScore={onChainScore}
 									loaderDisplayed={loaderDisplayed}
 								/>
 							</div>
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>Off Chain</p>
 								<Charts
-									connectedWallet={connectedWallet}
+									chainScore={offChainScore}
 									loaderDisplayed={loaderDisplayed}
 								/>
 							</div>
@@ -210,9 +196,7 @@ function App() {
 					</section>
 					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
 						<Button
-							onClick={() =>
-								openInNewTab("https://www.google.com/")
-							}
+							onClick={() => openInNewTab("https://www.google.com/")}
 							disabled={!loaderDisplayed}
 							width="35%"
 						>
@@ -232,31 +216,31 @@ function App() {
 						What is Karma Score?
 					</h4>
 					<p className="reputation-intro-first-block">
-						The <span>"Karma Score"</span> scoring system is unique
-						in that it incorporates both the organization's on-chain
-						and off-chain behaviour.
+						The <span>"Karma Score"</span> scoring system is unique in that it
+						incorporates both the organization's on-chain and off-chain
+						behaviour.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation off &nbsp;The Chain
 					</h4>
 
 					<p>
-						We determine the score by considering bureau reports,
-						any external ratings, proprietary financial information,
-						and other publicly accessible real-world data.
+						We determine the score by considering bureau reports, any external
+						ratings, proprietary financial information, and other publicly
+						accessible real-world data.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation on The Chain
 					</h4>
 					<p>
-						We analyse the wallet transactions, block explorer data, liquidation, NFTs and other
-						information from web 3 sources to determine the score.
+						We analyse the wallet transactions, block explorer data,
+						liquidation, NFTs and other information from web 3 sources to
+						determine the score.
 					</p>
-					<h4 className="blockpass-package-gray-header">
-						Score of Reputation
-					</h4>
+					<h4 className="blockpass-package-gray-header">Score of Reputation</h4>
 					<p>
-						The scores are provided to the DeFi Dapps who can then use those as per their needs.
+						The scores are provided to the DeFi Dapps who can then use those as
+						per their needs.
 					</p>
 				</section>
 			</main>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-const Charts = ({ connectedWallet, loaderDisplayed }) => {
+const Charts = ({ loaderDisplayed, chainScore }) => {
 	const [state, setState] = useState({
 		otherChart: {
 			series: [0],
@@ -55,11 +55,11 @@ const Charts = ({ connectedWallet, loaderDisplayed }) => {
 							},
 							value: {
 								formatter: function (val) {
-									return 'Empty';
+									return "?";
 								},
 								offsetY: -10,
 								color: "#111",
-								fontSize: "15px",
+								fontSize: "30px",
 								show: true,
 							},
 						},
@@ -77,17 +77,16 @@ const Charts = ({ connectedWallet, loaderDisplayed }) => {
 				stroke: {
 					lineCap: "round",
 				},
-				labels: [''],
+				labels: [""],
 			},
 		},
 	});
 
 	useEffect(() => {
-		if (connectedWallet.name !== "" && loaderDisplayed) {
-			const { score, name } = connectedWallet;
+		if (chainScore > 0 && loaderDisplayed) {
 			setState({
 				otherChart: {
-					series: [score / 10],
+					series: [chainScore / 9],
 					options: {
 						chart: {
 							height: 350,
@@ -138,11 +137,11 @@ const Charts = ({ connectedWallet, loaderDisplayed }) => {
 									},
 									value: {
 										formatter: function (val) {
-											return name;
+											return chainScore;
 										},
 										offsetY: -10,
 										color: "#111",
-										fontSize: "15px",
+										fontSize: "20px",
 										show: true,
 									},
 								},
@@ -165,7 +164,7 @@ const Charts = ({ connectedWallet, loaderDisplayed }) => {
 				},
 			});
 		}
-	}, [connectedWallet, loaderDisplayed]);
+	}, [chainScore, loaderDisplayed]);
 
 	return (
 		<div>
