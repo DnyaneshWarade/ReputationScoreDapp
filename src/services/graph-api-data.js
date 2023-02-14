@@ -80,30 +80,35 @@ const GET_WITHDRAWS = gql`
 	}
 `;
 export function GetBorrows(account) {
+	console.log("================== Graph Data of Borrowing ==================");
 	const { loading, error, data } = useQuery(GET_BORROWS, {
 		variables: { account },
 	});
 	console.log(data);
 }
 export function GetDeposits(account) {
+	console.log("================== Graph Data of Deposits ==================");
 	const { loading, error, data } = useQuery(GET_DEPOSITS, {
 		variables: { account },
 	});
 	console.log(data);
 }
 export function GetFlashLoans(account) {
+	console.log("================== Graph Data of Flash Loans ==================");
 	const { loading, error, data } = useQuery(GET_FLASH_LOANS, {
 		variables: { account },
 	});
 	console.log(data);
 }
 export function GetLiquidationCalls(account) {
+	console.log("================== Graph Data of Liquidation ==================");
 	const { loading, error, data } = useQuery(GET_LIQUIDATION_CALLS, {
 		variables: { account },
 	});
 	console.log(data);
 }
 export function GetRepays(account) {
+	console.log("================== Graph Data of Repayments ==================");
 	const { loading, error, data } = useQuery(GET_REPAYS, {
 		variables: { account },
 	});
@@ -116,6 +121,7 @@ export function GetSwaps(account) {
 	console.log(data);
 }
 export function GetWithdraws(account) {
+	console.log("================== Graph Data of Withdrawals ==================");
 	const { loading, error, data } = useQuery(GET_WITHDRAWS, {
 		variables: { account },
 	});

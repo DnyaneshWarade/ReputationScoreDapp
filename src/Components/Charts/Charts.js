@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-const Charts = ({ connectedWallet,loaderDisplayed}) => {
-	console.log(connectedWallet);
-
+const Charts = ({ connectedWallet, loaderDisplayed }) => {
 	const [state, setState] = useState({
 		otherChart: {
 			series: [0],

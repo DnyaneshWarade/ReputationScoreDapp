@@ -119,7 +119,7 @@ function App() {
 					availableWalletModalOpen || isLoader
 						? "blockpass-package-my-blur"
 						: ""
-				} reputation-body`}
+					} reputation-body`}
 			>
 				<section style={{ width: "70%" }}>
 					<section className="repu-card blockpass-package-macro-wallet-status">
@@ -229,13 +229,12 @@ function App() {
 						Reputation on The Chain
 					</h4>
 					<p>
-						We analyse the wallet transactions, block explorer data, and other
+						We analyse the wallet transactions, block explorer data, liquidation, NFTs and other
 						information from web 3 sources to determine the score.
 					</p>
 					<h4 className="blockpass-package-gray-header">Score of Reputation</h4>
 					<p>
-						The two scores are averaged together to create the result.
-						Customizable weights are provided.
+						The scores are provided to the DeFi Dapps who can then use those as per their needs.
 					</p>
 				</section>
 			</div>

@@ -5,6 +5,7 @@ const apiSecret = process.env.REACT_APP_API_SECRET_KUCOIN;
 const apiPassphrase = process.env.REACT_APP_API_PASSPHRASE_KUCOIN;
 
 export async function getBalance() {
+	console.log("================== Kucoin Data ==================");
 	const timestamp = Date.now();
 	const strToSign = timestamp + "GET" + "/api/v1/accounts";
 	const signature = CryptoJS.HmacSHA256(strToSign, apiSecret).toString(

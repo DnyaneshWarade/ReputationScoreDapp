@@ -5,8 +5,7 @@ const baseurl = "https://cors-anywhere.herokuapp.com/https://api.coindcx.com";
 
 export async function getBalances() {
 	const timeStamp = Math.floor(Date.now());
-	// To check if the timestamp is correct
-	console.log(timeStamp);
+	console.log("================== CoinDCX Data ==================");
 
 	const body = {
 		currency_short_name: "BTC",
