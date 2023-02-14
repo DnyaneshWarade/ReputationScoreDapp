@@ -12,7 +12,7 @@ const VideoCard = ({ setIsVideoOpen }) => {
 				style={{
 					width: "55%",
 					height: "50%",
-					top: "22%",
+					top: "17%",
 				}}
 			>
 				<div>

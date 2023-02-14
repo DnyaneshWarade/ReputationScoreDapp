@@ -99,6 +99,7 @@ main {
 	right: 0%;
 	bottom: 0%;
 	background: #000000b8;
+	z-index: 20;
 	display: flex;
 	align-items: center;
 	justify-content: center;
