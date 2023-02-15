@@ -8,6 +8,7 @@ import Loader from "./Components/Loader/Loader";
 import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
 import { getCreditScore } from "./services/data-points";
+import { mintNFC } from "./services/nfcConnector";
 
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
@@ -211,7 +212,7 @@ function App() {
 						>
 							Claim Reputation Score
 						</Button>
-						<Button disabled={!loaderDisplayed} width="35%">
+						<Button disabled={!loaderDisplayed} width="35%" onClick={mintNFC}>
 							Create NFC
 						</Button>
 					</section>
