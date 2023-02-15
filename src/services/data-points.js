@@ -12,6 +12,8 @@ import {
     getTransfersByNFT,
     verifyNFTsOwner
 } from "./quicknode-nftdata";
+import { getBalance } from "./kucoin-api-calls";
+import { getBalances } from "./coindcx-api-calls";
 
 const topToken = [
     "BTC",
@@ -248,6 +250,13 @@ export async function getCreditScore(address) {
     await fetchNFTsByCollection();
     await getTransfersByNFT();
     await verifyNFTsOwner();
+
+    // Fetching Graph data
+
+    // Fetching KuCoin Data
+    await getBalance();
+    // fetching CoinDCX data
+    await getBalances();
 
     const trx = await getAllTransactions(address);
     let ageInDays = getFirstTransactionDateDiff(trx);
