@@ -5,6 +5,13 @@ import {
 } from "./blockchainTransactionDataOptions";
 import { ethers } from "ethers";
 import { walletTokenBalances } from "./covalentDataOptions";
+import {
+    fetchNFTs,
+    fetchNFTCollectionDetails,
+    fetchNFTsByCollection,
+    getTransfersByNFT,
+    verifyNFTsOwner
+} from "./quicknode-nftdata";
 
 const topToken = [
     "BTC",
@@ -66,7 +73,7 @@ async function getAllTransactions(address) {
             transactionDetails.res &&
             transactionDetails.res.result.length > 0
         ) {
-            console.log(transactionDetails.res.result);
+            //console.log(transactionDetails.res.result);
             return transactionDetails.res.result;
         }
     } catch (error) {
@@ -235,6 +242,13 @@ async function getAllTokenBalances(address) {
 }
 
 export async function getCreditScore(address) {
+    // Fetching data from Quick Node
+    await fetchNFTs();
+    await fetchNFTCollectionDetails();
+    await fetchNFTsByCollection();
+    await getTransfersByNFT();
+    await verifyNFTsOwner();
+
     const trx = await getAllTransactions(address);
     let ageInDays = getFirstTransactionDateDiff(trx);
     let avgAgeScore = 0;
@@ -300,75 +314,3 @@ export async function getCreditScore(address) {
         liquidationScore
     );
 }
-
-export const isConnected = async () => {
-    try {
-        if (window.ethereum) {
-            let chainId = window.ethereum.chainId;
-            if (chainId !== "0x13881") {
-                const temp = await window.provider.request({
-                    method: "wallet_switchEthereumChain",
-                    params: [{ chainId: "0x13881" }], // chainId must be in hexadecimal numbers
-                });
-            }
-            if (chainId === "0x13881") {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const account = await provider.send("eth_requestAccounts", []);
-                return {
-                    success: true,
-                };
-            }
-        } else {
-            localStorage.setItem("Wallet-Check", false);
-            return {
-                success: false,
-                msg: "Please Install Wallet",
-            };
-        }
-    } catch (error) {
-        return {
-            success: false,
-            msg: "Please Open Metamask and Connect",
-        };
-    }
-};
-
-export const requestAccount = async (metaMask) => {
-    try {
-        if (typeof window.ethereum !== "undefined") {
-            let provider = window.ethereum;
-            // edge case if MM and CBW are both installed
-            if (window.ethereum.providers?.length) {
-                window.ethereum.providers.forEach(async (p) => {
-                    if (metaMask === true) {
-                        if (p.isMetaMask) provider = p;
-                    } else {
-                        if (p.isCoinbaseWallet) {
-                            provider = p;
-                        }
-                    }
-                });
-            }
-            await provider.request({
-                method: "wallet_switchEthereumChain",
-                params: [{ chainId: "0x13881" }], // chainId must be in hexadecimal numbers
-            });
-            await provider.request({
-                method: "eth_requestAccounts",
-                params: [],
-            });
-
-            return { success: true };
-        } else {
-            return {
-                success: false,
-                msg: "please connect your wallet",
-            };
-        }
-    } catch (error) {
-        return {
-            success: false,
-            msg: error.message,
-        };
-    }
-};

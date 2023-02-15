@@ -2,7 +2,7 @@ import React from "react";
 import { Player } from "@livepeer/react";
 import "../../App.css";
 
-const playbackId = "721cq9iewi4c2ybt";
+const playbackId = "a44c3m96nbh5xmqr";
 
 const VideoCard = ({ setIsVideoOpen }) => {
 	return (

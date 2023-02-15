@@ -7,6 +7,7 @@ import karma_score from "./Images/karma_score.png";
 import Loader from "./Components/Loader/Loader";
 import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
+import { getCreditScore } from "./services/data-points";
 
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
@@ -17,8 +18,8 @@ function App() {
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
 	const [isVideoOpen, setIsVideoOpen] = useState(false);
-	const [offChainScore, setoffChainScore] = useState(450);
-	const [onChainScore, setOnChainScore] = useState(900);
+	const [offChainScore, setoffChainScore] = useState();
+	const [onChainScore, setOnChainScore] = useState();
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
@@ -31,7 +32,7 @@ function App() {
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676298745/ProfilePic_1_c1ghhg.svg",
 			name: "CoinDcx",
-			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
+			id: "dny****ar@gmail.com",
 			selected: false,
 			primary: false,
 			score: 700,
@@ -39,7 +40,7 @@ function App() {
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676298651/kucoin-cryptocurrency-stock-market-logo-isolated-white-background-crypto-stock-exchange-symbol-design-element-banners_337410-1692_uurpka.jpg",
 			name: "KuCoin",
-			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
+			id: "dn**@**.com",
 			selected: false,
 			primary: false,
 			score: 700,
@@ -107,6 +108,13 @@ function App() {
 		window.open(url, "_blank", "noopener,noreferrer");
 	};
 
+	const fetchCreditScore = async () => {
+		setIsLoader(true);
+		setoffChainScore(713);
+		let score = await getCreditScore("0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1");
+		setOnChainScore(score);
+	};
+
 	return (
 		<div>
 			<div className={`${isLoader && "video-my-blur"}`}>
@@ -122,7 +130,7 @@ function App() {
 					availableWalletModalOpen || isLoader || isVideoOpen
 						? "blockpass-package-my-blur"
 						: ""
-				} reputation-body`}
+					} reputation-body`}
 			>
 				<section style={{ width: "70%" }}>
 					<section className="repu-card blockpass-package-macro-wallet-status">
@@ -168,7 +176,7 @@ function App() {
 						<Button onClick={() => setAvailableWalletModalOpen(true)}>
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
-						<Button onClick={() => setIsLoader(true)} disabled={!selected}>
+						<Button onClick={fetchCreditScore} disabled={!selected}>
 							Get Credit Score
 						</Button>
 					</section>
@@ -179,16 +187,17 @@ function App() {
 						</h3>
 						<div className="blockpass-package-macro-wallet-card">
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
-								<p>On Chain</p>
-								<Charts
-									chainScore={onChainScore}
-									loaderDisplayed={loaderDisplayed}
-								/>
-							</div>
-							<div className="blockpass-package-graph-card blockpass-package-flex-center">
 								<p>Off Chain</p>
 								<Charts
 									chainScore={offChainScore}
+									loaderDisplayed={loaderDisplayed}
+								/>
+							</div>
+
+							<div className="blockpass-package-graph-card blockpass-package-flex-center">
+								<p>On Chain</p>
+								<Charts
+									chainScore={onChainScore}
 									loaderDisplayed={loaderDisplayed}
 								/>
 							</div>
