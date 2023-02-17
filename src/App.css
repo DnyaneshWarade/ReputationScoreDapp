@@ -26,6 +26,7 @@ main {
 }
 
 .reputation-header{
+	padding-bottom:0px;
 }
 
 .reputation-header img {
@@ -521,14 +522,27 @@ main {
 
 .blockpass-package-macro-wallet-status,
 .blockpass-package-macro-wallet-card-container,
-.bottom-buttons {
+.bottom-buttons, .qrcode-container,.blockpass-package-right-side {
 	border-radius: 8px;
 	border: 1px solid rgb(207, 224, 219);
 	padding: 1rem;
 }
+.qrcode-container{
+	
+	display: flex;
+	flex-direction: column;
+}
+.qrcode-container h3{
+	margin:0;
+	margin-bottom: 10px;
+}
+.qrcode-container img{
+	width:250px;
+	height: 250px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
 
 .repu-card {
-	background: linear-gradient(90deg,#9af1be60, #e9ebea41);
 	background: linear-gradient(302.85deg,
 			rgba(42, 189, 145, 0) -1.23%,
 			rgba(42, 189, 145, 0.192) 99.99%,
