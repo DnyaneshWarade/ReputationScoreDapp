@@ -3,19 +3,52 @@ import AvailableWallets from "./Components/Modals/AvailableWallets/AvailableWall
 import "./App.css";
 import Charts from "./Components/Charts/Charts";
 import Button from "./Components/Button/Button";
-import karma_score from "./Images/karma_score.png";
 import Loader from "./Components/Loader/Loader";
 import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
 import { getCreditScore } from "./services/data-points";
 import { mintNFC } from "./services/nfcConnector";
 import InfoModal from "./Components/Modals/InfoModal";
+import karma_score from "./Images/karma_score.png";
+import { QRCode } from "react-qr-svg";
+
+const data = {
+	id: "c811849d-6bfb-4d85-936e-3d9759c7f105",
+	typ: "application/iden3comm-plain-json",
+	type: "https://iden3-communication.io/proofs/1.0/contract-invoke-request",
+	body: {
+		transaction_data: {
+			contract_address: "0x439a2A7E5bf91d6dAd804873F83a528F78Ac424F",
+			method_id: "b68967e2",
+			chain_id: 80001,
+			network: "polygon-mumbai",
+		},
+		reason: "karma score",
+		scope: [
+			{
+				id: 1,
+				circuit_id: "credentialAtomicQuerySig",
+				rules: {
+					query: {
+						allowed_issuers: ["*"],
+						req: { OnChainScore: { $gt: 0 } },
+						schema: {
+							url: "https://s3.eu-west-1.amazonaws.com/polygonid-schemas/564b804d-f8c1-4fac-a424-b39ae9c5ce4c.json-ld",
+							type: "Holistic Reputation Score",
+						},
+					},
+				},
+			},
+		],
+	},
+};
 
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
 function App() {
 	const [isLoader, setIsLoader] = useState(false);
+	const [isClickedClaim, setIsClickedClaim] = useState(false);
 	const [loaderDisplayed, setLoaderDisplayed] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
@@ -131,7 +164,9 @@ function App() {
 		setIsLoader(true);
 		setoffChainScore(713);
 		let score = await getCreditScore(
+			
 			"0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1"
+		
 		);
 		setOnChainScore(score);
 	};
@@ -144,7 +179,10 @@ function App() {
 
 			<header className="reputation-header">
 				<img src={karma_score} alt="" />
-				<PlayButton onClick={setIsVideoOpen} className="header-button" />
+				<PlayButton
+					onClick={setIsVideoOpen}
+					className="header-button"
+				/>
 			</header>
 			<main
 				className={`${
@@ -165,7 +203,9 @@ function App() {
 								<p>
 									<span>Wallet not connected</span>
 									<span
-										onClick={() => setAvailableWalletModalOpen(true)}
+										onClick={() =>
+											setAvailableWalletModalOpen(true)
+										}
 										style={{ cursor: "pointer" }}
 										className="blockpass-package-wallet-connect"
 									>
@@ -194,7 +234,9 @@ function App() {
 					</section>
 					<br />
 					<section className="blockpass-package-flex-center button-group">
-						<Button onClick={() => setAvailableWalletModalOpen(true)}>
+						<Button
+							onClick={() => setAvailableWalletModalOpen(true)}
+						>
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
 						<Button onClick={fetchCreditScore} disabled={!selected}>
@@ -226,7 +268,10 @@ function App() {
 					</section>
 					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
 						<Button
-							onClick={() => openInNewTab("https://www.google.com/")}
+							onClick={() => (
+								openInNewTab("https://www.google.com/"),
+								setIsClickedClaim(true)
+							)}
 							disabled={!loaderDisplayed}
 							width="35%"
 						>
@@ -240,6 +285,17 @@ function App() {
 							Create NFC
 						</Button>
 					</section>
+
+					{isClickedClaim && (
+						<section className="blockpass-package-flex-center repu-card qrcode-container">
+							<h3>Verify Your claim and get Karma Score NFC</h3>
+							<QRCode
+								level="Q"
+								style={{ width: 256 }}
+								value={JSON.stringify(data)}
+							/>
+						</section>
+					)}
 				</section>
 
 				<section
@@ -250,31 +306,33 @@ function App() {
 						What is Karma Score?
 					</h4>
 					<p className="reputation-intro-first-block">
-						The <span>"Karma Score"</span> scoring system is unique in that it
-						incorporates both the organization's on-chain and off-chain
-						behaviour.
+						The <span>"Karma Score"</span> scoring system is unique
+						in that it incorporates both the organization's on-chain
+						and off-chain behaviour.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation off &nbsp;The Chain
 					</h4>
 
 					<p>
-						We determine the score by considering bureau reports, any external
-						ratings, proprietary financial information, and other publicly
-						accessible real-world data.
+						We determine the score by considering bureau reports,
+						any external ratings, proprietary financial information,
+						and other publicly accessible real-world data.
 					</p>
 					<h4 className="blockpass-package-gray-header">
 						Reputation on The Chain
 					</h4>
 					<p>
 						We analyse the wallet transactions, block explorer data,
-						liquidation, NFTs and other information from web 3 sources to
-						determine the score.
+						liquidation, NFTs and other information from web 3
+						sources to determine the score.
 					</p>
-					<h4 className="blockpass-package-gray-header">Score of Reputation</h4>
+					<h4 className="blockpass-package-gray-header">
+						Score of Reputation
+					</h4>
 					<p>
-						The scores are provided to the DeFi Dapps who can then use those as
-						per their needs.
+						The scores are provided to the DeFi Dapps who can then
+						use those as per their needs.
 					</p>
 				</section>
 			</main>

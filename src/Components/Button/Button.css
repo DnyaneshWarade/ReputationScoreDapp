@@ -3,6 +3,7 @@
 	border-radius: 100px;
 	border: 1px solid #08f56b;
 	font-size: 16px;
+	cursor: pointer;
 	line-height: 23px;
 	color: white;
 	background-image: linear-gradient(90deg, #33c570, #63cc8fc5);
