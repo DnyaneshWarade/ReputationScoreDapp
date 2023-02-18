@@ -8,6 +8,7 @@ import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
 import { getCreditScore } from "./services/data-points";
 import { mintNFC } from "./services/nfcConnector";
+import InfoModal from "./Components/Modals/InfoModal";
 import karma_score from "./Images/karma_score.png";
 import { QRCode } from "react-qr-svg";
 
@@ -114,14 +115,12 @@ function App() {
 		},
 	]);
 
-	useEffect(() => {
-		if (isLoader) {
-			setTimeout(() => {
-				setIsLoader(false);
-				setCreditLoaderDisplayed(true);
-			}, 7000);
-		}
-	}, [isLoader, creditLoaderDisplayed]);
+	if (isLoader) {
+		setTimeout(() => {
+			setIsLoader(false);
+			setLoaderDisplayed(true);
+		}, 7000);
+	}
 
 	useEffect(() => {
 		for (let wallet of availableWallets) {
@@ -141,7 +140,9 @@ function App() {
 		setIsLoader(true);
 		setoffChainScore(713);
 		let score = await getCreditScore(
+			
 			"0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1"
+		
 		);
 		setOnChainScore(score);
 	};
@@ -259,7 +260,7 @@ function App() {
 						<Button
 							disabled={!creditLoaderDisplayed}
 							width="35%"
-							onClick={mintNFC}
+							onClick={nfcHandler}
 						>
 							Create NFC
 						</Button>
@@ -329,6 +330,14 @@ function App() {
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
 					availableWallets={availableWallets}
 					setIsVideoOpen={setIsVideoOpen}
+				/>
+			)}
+
+			{isModal && (
+				<InfoModal
+					setIsModal={setIsModal}
+					isInfoModalMsg={isInfoModalMsg}
+					setIsInfoModalMsg={setIsInfoModalMsg}
 				/>
 			)}
 		</div>
