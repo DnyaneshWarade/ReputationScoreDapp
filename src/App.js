@@ -48,19 +48,19 @@ const user =
 function App() {
 	const [isLoader, setIsLoader] = useState(false);
 	const [isClickedClaim, setIsClickedClaim] = useState(false);
-	const [loaderDisplayed, setLoaderDisplayed] = useState(false);
+	const [creditLoaderDisplayed, setCreditLoaderDisplayed] = useState(false);
+	const [selected, setSelected] = useState(false);
 	const [availableWalletModalOpen, setAvailableWalletModalOpen] =
 		useState(false);
 	const [isVideoOpen, setIsVideoOpen] = useState(false);
-	const [offChainScore, setoffChainScore] = useState();
-	const [onChainScore, setOnChainScore] = useState();
+	const [offChainScore, setoffChainScore] = useState(0);
+	const [onChainScore, setOnChainScore] = useState(0);
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
 			name: "MetaMask",
 			id: "0",
 			selected: false,
-			primary: true,
 			score: 905,
 		},
 		{
@@ -68,7 +68,6 @@ function App() {
 			name: "CoinDcx",
 			id: "dny****ar@gmail.com",
 			selected: false,
-			primary: false,
 			score: 700,
 		},
 		{
@@ -76,7 +75,6 @@ function App() {
 			name: "KuCoin",
 			id: "dn**@**.com",
 			selected: false,
-			primary: false,
 			score: 700,
 		},
 		{
@@ -84,7 +82,6 @@ function App() {
 			name: "WalletConnect",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
-			primary: false,
 			score: 700,
 		},
 		{
@@ -92,7 +89,6 @@ function App() {
 			name: "Coinbase",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
-			primary: false,
 			score: 650,
 		},
 		{
@@ -100,7 +96,6 @@ function App() {
 			name: "Magic Wallet",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
-			primary: false,
 			score: 805,
 		},
 		{
@@ -108,7 +103,6 @@ function App() {
 			name: "Portis",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
-			primary: false,
 			score: 907,
 		},
 		{
@@ -116,19 +110,19 @@ function App() {
 			name: "Torus",
 			id: "0xc5e5be3602995a7f0bd737e0931d776a0bcc336f",
 			selected: false,
-			primary: false,
 			score: 700,
 		},
 	]);
 
-	if (isLoader) {
-		setTimeout(() => {
-			setIsLoader(false);
-			setLoaderDisplayed(true);
-		}, 7000);
-	}
+	useEffect(() => {
+		if (isLoader) {
+			setTimeout(() => {
+				setIsLoader(false);
+				setCreditLoaderDisplayed(true);
+			}, 7000);
+		}
+	}, [isLoader, creditLoaderDisplayed]);
 
-	const [selected, setSelected] = useState(false);
 	useEffect(() => {
 		for (let wallet of availableWallets) {
 			if (wallet.selected === true) {
@@ -136,7 +130,8 @@ function App() {
 				break;
 			}
 		}
-	}, [availableWallets]);
+		setIsClickedClaim(false);
+	}, [availableWallets, creditLoaderDisplayed]);
 
 	const openInNewTab = (url) => {
 		window.open(url, "_blank", "noopener,noreferrer");
@@ -233,7 +228,9 @@ function App() {
 								<p>Off Chain</p>
 								<Charts
 									chainScore={offChainScore}
-									loaderDisplayed={loaderDisplayed}
+									creditLoaderDisplayed={
+										creditLoaderDisplayed
+									}
 								/>
 							</div>
 
@@ -241,24 +238,26 @@ function App() {
 								<p>On Chain</p>
 								<Charts
 									chainScore={onChainScore}
-									loaderDisplayed={loaderDisplayed}
+									creditLoaderDisplayed={
+										creditLoaderDisplayed
+									}
 								/>
 							</div>
 						</div>
 					</section>
 					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
 						<Button
-							onClick={() => (
-								openInNewTab("https://www.google.com/"),
-								setIsClickedClaim(true)
-							)}
-							disabled={!loaderDisplayed}
+							onClick={() => {
+								openInNewTab("https://www.google.com/");
+								setIsClickedClaim(true);
+							}}
+							disabled={!creditLoaderDisplayed}
 							width="35%"
 						>
 							Claim Reputation Score
 						</Button>
 						<Button
-							disabled={!loaderDisplayed}
+							disabled={!creditLoaderDisplayed}
 							width="35%"
 							onClick={mintNFC}
 						>
@@ -266,7 +265,7 @@ function App() {
 						</Button>
 					</section>
 
-					{isClickedClaim && (
+					{isClickedClaim && creditLoaderDisplayed && (
 						<section className="blockpass-package-flex-center repu-card qrcode-container">
 							<h3>Verify Your claim and get Karma Score NFC</h3>
 							<QRCode
@@ -321,6 +320,7 @@ function App() {
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
 					availableWallets={availableWallets}
 					setAvailableWallets={setAvailableWallets}
+					setCreditLoaderDisplayed={setCreditLoaderDisplayed}
 				/>
 			)}
 
