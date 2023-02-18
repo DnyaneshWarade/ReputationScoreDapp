@@ -56,6 +56,8 @@ function App() {
 	const [isVideoOpen, setIsVideoOpen] = useState(false);
 	const [offChainScore, setoffChainScore] = useState(0);
 	const [onChainScore, setOnChainScore] = useState(0);
+	const [isModal, setIsModal] = useState(false);
+	const [isInfoModalMsg, setIsInfoModalMsg] = useState("");
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
@@ -115,12 +117,36 @@ function App() {
 		},
 	]);
 
-	if (isLoader) {
-		setTimeout(() => {
-			setIsLoader(false);
-			setLoaderDisplayed(true);
-		}, 7000);
-	}
+	useEffect(() => {
+		if (isLoader) {
+			setTimeout(() => {
+				setIsLoader(false);
+				setCreditLoaderDisplayed(true);
+			}, 7000);
+		}
+	}, [isLoader, creditLoaderDisplayed]);
+
+	const nfcHandler = async () => {
+		setIsModal(true);
+		const nfcData = await mintNFC();
+		console.log(nfcData);
+		if (nfcData.success) {
+			setIsInfoModalMsg(nfcData.msg);
+		} else {
+			if (nfcData.msg.includes("user rejected transaction")) {
+				setIsInfoModalMsg("User rejected transaction");
+			} else {
+				setIsInfoModalMsg(nfcData.msg);
+			}
+		}
+	};
+
+	// if (isLoader) {
+	// 	setTimeout(() => {
+	// 		setIsLoader(false);
+	// 		setLoaderDisplayed(true);
+	// 	}, 7000);
+	// }
 
 	useEffect(() => {
 		for (let wallet of availableWallets) {
