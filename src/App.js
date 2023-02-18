@@ -9,6 +9,7 @@ import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
 import { getCreditScore } from "./services/data-points";
 import { mintNFC } from "./services/nfcConnector";
+import InfoModal from "./Components/Modals/InfoModal";
 
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
@@ -21,6 +22,8 @@ function App() {
 	const [isVideoOpen, setIsVideoOpen] = useState(false);
 	const [offChainScore, setoffChainScore] = useState();
 	const [onChainScore, setOnChainScore] = useState();
+	const [isModal, setIsModal] = useState(false);
+	const [isInfoModalMsg, setIsInfoModalMsg] = useState("");
 	const [availableWallets, setAvailableWallets] = useState([
 		{
 			logo: "https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021060/logo1_q4lugd.png",
@@ -88,6 +91,21 @@ function App() {
 		},
 	]);
 
+	const nfcHandler = async () => {
+		setIsModal(true);
+		const nfcData = await mintNFC();
+		console.log(nfcData);
+		if (nfcData.success) {
+			setIsInfoModalMsg(nfcData.msg);
+		} else {
+			if (nfcData.msg.includes("user rejected transaction")) {
+				setIsInfoModalMsg("User rejected transaction");
+			} else {
+				setIsInfoModalMsg(nfcData.msg);
+			}
+		}
+	};
+
 	if (isLoader) {
 		setTimeout(() => {
 			setIsLoader(false);
@@ -112,7 +130,9 @@ function App() {
 	const fetchCreditScore = async () => {
 		setIsLoader(true);
 		setoffChainScore(713);
-		let score = await getCreditScore("0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1");
+		let score = await getCreditScore(
+			"0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1"
+		);
 		setOnChainScore(score);
 	};
 
@@ -131,7 +151,7 @@ function App() {
 					availableWalletModalOpen || isLoader || isVideoOpen
 						? "blockpass-package-my-blur"
 						: ""
-					} reputation-body`}
+				} reputation-body`}
 			>
 				<section style={{ width: "70%" }}>
 					<section className="repu-card blockpass-package-macro-wallet-status">
@@ -212,7 +232,11 @@ function App() {
 						>
 							Claim Reputation Score
 						</Button>
-						<Button disabled={!loaderDisplayed} width="35%" onClick={mintNFC}>
+						<Button
+							disabled={!loaderDisplayed}
+							width="35%"
+							onClick={nfcHandler}
+						>
 							Create NFC
 						</Button>
 					</section>
@@ -267,6 +291,14 @@ function App() {
 					setAvailableWalletModalOpen={setAvailableWalletModalOpen}
 					availableWallets={availableWallets}
 					setIsVideoOpen={setIsVideoOpen}
+				/>
+			)}
+
+			{isModal && (
+				<InfoModal
+					setIsModal={setIsModal}
+					isInfoModalMsg={isInfoModalMsg}
+					setIsInfoModalMsg={setIsInfoModalMsg}
 				/>
 			)}
 		</div>
