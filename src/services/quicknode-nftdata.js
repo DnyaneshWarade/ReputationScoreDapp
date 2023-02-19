@@ -63,9 +63,3 @@ export async function verifyNFTsOwner() {
     ]);
     console.log(NFTowner);
 }
-
-fetchNFTs();
-fetchNFTCollectionDetails();
-fetchNFTsByCollection();
-getTransfersByNFT();
-verifyNFTsOwner();

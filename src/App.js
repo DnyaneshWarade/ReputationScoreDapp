@@ -9,7 +9,7 @@ import VideoCard from "./Components/VideoCard/VideoCard";
 import PlayButton from "./Components/Button/PlayButton";
 import { getCreditScore } from "./services/data-points";
 import { mintNFC } from "./services/nfcConnector";
-
+import { sendNotification } from "./services/pushNotification"
 const user =
 	"https://res.cloudinary.com/dltzp2gwx/image/upload/v1676021061/user-logo_w8yfph.jpg";
 
@@ -114,6 +114,11 @@ function App() {
 		setoffChainScore(713);
 		let score = await getCreditScore("0xdad4c11e8cc6a5c37808d3b31b3b284809f702d1");
 		setOnChainScore(score);
+		sendNotification(
+			window.ethereum.selectedAddress,
+			"Your Karma score is generated Successfully",
+			`Your offChain score is 713 and onChain score is ${score}`
+		);
 	};
 
 	return (
@@ -178,13 +183,13 @@ function App() {
 							{selected ? "+ Add more wallet" : "Connect Wallet"}
 						</Button>
 						<Button onClick={fetchCreditScore} disabled={!selected}>
-							Get Credit Score
+							Get Karma Score
 						</Button>
 					</section>
 
 					<section className="repu-card blockpass-package-macro-wallet-card-container">
 						<h3 className="text-center blockpass-package-gray-header">
-							Reputation Score
+							Karma Score
 						</h3>
 						<div className="blockpass-package-macro-wallet-card">
 							<div className="blockpass-package-graph-card blockpass-package-flex-center">
@@ -206,15 +211,19 @@ function App() {
 					</section>
 					<section className="repu-card blockpass-package-flex-center button-group bottom-buttons">
 						<Button
-							onClick={() => openInNewTab("https://www.google.com/")}
+							onClick={() => openInNewTab("https://platform-test.polygonid.com/claim-link/da8b473d-663c-46cd-9271-1a463a8bd500")}
 							disabled={!loaderDisplayed}
 							width="35%"
 						>
-							Claim Reputation Score
+							Claim Karma Score
 						</Button>
 						<Button disabled={!loaderDisplayed} width="35%" onClick={mintNFC}>
 							Create NFC
 						</Button>
+					</section>
+					<section className="blockpass-package-flex-center repu-card qrcode-container">
+						<h3>Verify Your claim and get Karma Score NFC</h3>
+						<img className="qrcode-img" src="./verificationQR.png" alt="" />
 					</section>
 				</section>
 
