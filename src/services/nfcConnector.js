@@ -429,7 +429,7 @@ export const mintNFC = async () => {
 			const tx = await contract.safeMint(account);
 			await tx.wait();
 			console.log(tx);
-			return { tx, success: true };
+			return { tx, success: true, msg: "NFC is successfully created" };
 		} else {
 			return {
 				success: false,

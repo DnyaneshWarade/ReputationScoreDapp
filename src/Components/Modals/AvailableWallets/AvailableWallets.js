@@ -8,8 +8,13 @@ const AvailableWallets = ({
 	setAvailableWalletModalOpen,
 	availableWallets,
 	setAvailableWallets,
+	setCreditLoaderDisplayed,
 }) => {
 	const metaMaskHandler = async (wallet, i) => {
+		// check if already selected or not
+		if (wallet.selected === true) {
+			return;
+		}
 		setTimeout(() => {
 			setAvailableWalletModalOpen(false);
 		}, 500);
@@ -25,6 +30,7 @@ const AvailableWallets = ({
 
 			setAvailableWallets([...availableWallets]);
 		}
+		setCreditLoaderDisplayed(false);
 	};
 	return (
 		<div className="video-my-blur">
@@ -38,7 +44,9 @@ const AvailableWallets = ({
 				}}
 			>
 				<div className="blockpass-package-modal-header">
-					<h3 className="blockpass-package-modal-title">Available Wallets</h3>
+					<h3 className="blockpass-package-modal-title">
+						Available Wallets
+					</h3>
 					<label
 						onClick={() => setAvailableWalletModalOpen(false)}
 						className="blockpass-package-modal-close"
@@ -75,7 +83,9 @@ const AvailableWallets = ({
 										alt=""
 									/>
 								</div>
-								<h4 className="blockpass-package-wallet-name">{wallet.name}</h4>
+								<h4 className="blockpass-package-wallet-name">
+									{wallet.name}
+								</h4>
 							</div>
 							{wallet.selected === true ? (
 								<p className="blockpass-package-selected-symbol">
