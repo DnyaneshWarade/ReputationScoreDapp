@@ -3,6 +3,11 @@ import "./Loader.css";
 
 const Loader = () => {
 	const loaderName = [
+		"Proof of Sustainability: GHG emissions reduced data",
+		"Proof of Sustainability: Renewable energy produced",
+		"Proof of Sustainability: Livelihoods supported",
+		"Proof of Sustainability: Improvement in health",
+		"Proof of Sustainability: SDG Goals met",
 		"DeFi Actions",
 		"Liquidation History",
 		"Health and Risk Factors",

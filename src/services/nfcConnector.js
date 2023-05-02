@@ -402,7 +402,7 @@ const abi = [
 	},
 ];
 
-const contractAddress = "0x680067f029C4b4c43eF297A525Ef0Ce6AF819980";
+const contractAddress = "0xe585Ee5af64A93f2b6eeC88E816B835d514E1780";
 
 export const mintNFC = async () => {
 	const ethereum = window.ethereum;
@@ -410,10 +410,10 @@ export const mintNFC = async () => {
 	try {
 		let chainId = window.ethereum.chainId;
 		console.log(chainId);
-		if (chainId !== "0x1389") {
+		if (chainId !== "0x30e0a") {
 			await window.ethereum.request({
 				method: "wallet_switchEthereumChain",
-				params: [{ chainId: "0x1389" }], // chainId must be in hexadecimal numbers
+				params: [{ chainId: "0x30e0a" }], // chainId must be in hexadecimal numbers
 			});
 		}
 		if (typeof window.ethereum !== "undefined") {
@@ -455,10 +455,10 @@ export const isValidNFC = async (tokenId) => {
 	try {
 		let chainId = window.ethereum.chainId;
 		console.log(chainId);
-		if (chainId !== "0x1389") {
+		if (chainId !== "0x30e0a") {
 			await window.ethereum.request({
 				method: "wallet_switchEthereumChain",
-				params: [{ chainId: "0x1389" }], // chainId must be in hexadecimal numbers
+				params: [{ chainId: "0x30e0a" }], // chainId must be in hexadecimal numbers
 			});
 		}
 		if (typeof window.ethereum !== "undefined") {
@@ -498,10 +498,10 @@ export const tokenURI = async (tokenId) => {
 	try {
 		let chainId = window.ethereum.chainId;
 		console.log(chainId);
-		if (chainId !== "0x1389") {
+		if (chainId !== "0x30e0a") {
 			await window.ethereum.request({
 				method: "wallet_switchEthereumChain",
-				params: [{ chainId: "0x1389" }], // chainId must be in hexadecimal numbers
+				params: [{ chainId: "0x30e0a" }], // chainId must be in hexadecimal numbers
 			});
 		}
 		if (typeof window.ethereum !== "undefined") {

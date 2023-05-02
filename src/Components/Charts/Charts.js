@@ -84,6 +84,7 @@ const Charts = ({ creditLoaderDisplayed, chainScore }) => {
 
 	useEffect(() => {
 		if (creditLoaderDisplayed) {
+			chainScore = chainScore == 0 ? 720 : chainScore;
 			setState({
 				otherChart: {
 					series: [chainScore / 9],

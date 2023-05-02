@@ -3,13 +3,13 @@ export const isConnected = async () => {
 	try {
 		if (window.ethereum) {
 			let chainId = window.ethereum.chainId;
-			if (chainId !== "0x1389") {
+			if (chainId !== "0x30e0a") {
 				const temp = await window.provider.request({
 					method: "wallet_switchEthereumChain",
-					params: [{ chainId: "0x1389" }], // chainId must be in hexadecimal numbers
+					params: [{ chainId: "0x30e0a" }], // chainId must be in hexadecimal numbers
 				});
 			}
-			if (chainId === "0x1389") {
+			if (chainId === "0x30e0a") {
 				const provider = new ethers.providers.Web3Provider(window.ethereum);
 				const account = await provider.send("eth_requestAccounts", []);
 				console.log(account);

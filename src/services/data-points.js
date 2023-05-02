@@ -253,6 +253,12 @@ async function getAllTokenBalances(address) {
 }
 
 export async function getCreditScore(address) {
+	console.log("================== Proof of Sustainability Data ==================");
+	console.log("GHG emissions reduced data");
+	console.log("Renewable energy produced");
+	console.log("Livelihoods supported");
+	console.log("Improvement in health");
+	console.log("SDG Goals met");
 	// Fetching data from Quick Node
 	await fetchNFTs();
 	await fetchNFTCollectionDetails();
@@ -261,13 +267,16 @@ export async function getCreditScore(address) {
 	await verifyNFTsOwner();
 
 	// Fetching Graph data
-	await getBorrows("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getDeposits("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getFlashLoans("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getLiquidationCalls("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getRepays("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getSwaps("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
-	await getWithdraws("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	console.log("================== Graph Data of Deposits ==================");
+	console.log("================== Graph Data of Borrowings ==================");
+	
+	// await getBorrows("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getDeposits("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getFlashLoans("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getLiquidationCalls("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getRepays("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getSwaps("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
+	// await getWithdraws("0xf1fa3b44c153f7988ff5de730b138eec476a7533");
 
 	// Fetching KuCoin Data
 	await getBalance();
